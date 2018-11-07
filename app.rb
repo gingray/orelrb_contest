@@ -17,7 +17,7 @@ class Orelrb < Sinatra::Base
     first_name = "#{params[:first_name]} #{Digest::MD5.hexdigest(params[:first_name])}"
     last_name = "#{params[:last_name]} #{Digest::MD5.hexdigest(params[:last_name])}"
 
-    result = { id: params[:id], first_name: first_name, last_name: last_name, say: RUBY_MSG }
+    result = { id: params[:id], first_name: first_name, last_name: last_name, say: RUBY_MSG, current_time: Time.now.strftime("%F %T %z") }
     json result
   end
 
