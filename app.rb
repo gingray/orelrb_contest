@@ -14,10 +14,12 @@ class Orelrb < Sinatra::Base
   end
 
   post '/' do
-    first_name = "#{params[:first_name]} #{Digest::MD5.hexdigest(params[:first_name])}"
-    last_name = "#{params[:last_name]} #{Digest::MD5.hexdigest(params[:last_name])}"
+    request.body.rewind
+    payload = JSON.parse request.body.read
+    first_name = "#{payload['first_name']} #{Digest::MD5.hexdigest(payload['first_name'])}"
+    last_name = "#{payload['last_name']} #{Digest::MD5.hexdigest(payload['last_name'])}"
 
-    result = { id: params[:id], first_name: first_name, last_name: last_name, say: RUBY_MSG, current_time: Time.now.strftime("%F %T %z") }
+    result = { id: payload['id'], first_name: first_name, last_name: last_name, say: RUBY_MSG, current_time: Time.now.strftime("%F %T %z") }
     json result
   end
 
