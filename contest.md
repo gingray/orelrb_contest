@@ -40,3 +40,8 @@ Artem Grinn:
 lang: c#  
 solution: https://github.com/ArtemGrinn/orelcodes_contest  
 pruff:   
+
+Anton Litvinov:  
+lang: rust
+solution: https://github.com/Zensey/rust-json-helloworld
+pruff:   
